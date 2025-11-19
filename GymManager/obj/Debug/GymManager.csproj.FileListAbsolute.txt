@@ -1,0 +1,11 @@
+C:\Users\thaly\source\repos\Projeto-Final-Banco-de-Dados-2-\GymManager\bin\Debug\GymManager.exe.config
+C:\Users\thaly\source\repos\Projeto-Final-Banco-de-Dados-2-\GymManager\bin\Debug\GymManager.exe
+C:\Users\thaly\source\repos\Projeto-Final-Banco-de-Dados-2-\GymManager\bin\Debug\GymManager.pdb
+C:\Users\thaly\source\repos\Projeto-Final-Banco-de-Dados-2-\GymManager\obj\Debug\GymManager.csproj.AssemblyReference.cache
+C:\Users\thaly\source\repos\Projeto-Final-Banco-de-Dados-2-\GymManager\obj\Debug\GymManager.alunos_main.resources
+C:\Users\thaly\source\repos\Projeto-Final-Banco-de-Dados-2-\GymManager\obj\Debug\GymManager.main_form.resources
+C:\Users\thaly\source\repos\Projeto-Final-Banco-de-Dados-2-\GymManager\obj\Debug\GymManager.Properties.Resources.resources
+C:\Users\thaly\source\repos\Projeto-Final-Banco-de-Dados-2-\GymManager\obj\Debug\GymManager.csproj.GenerateResource.cache
+C:\Users\thaly\source\repos\Projeto-Final-Banco-de-Dados-2-\GymManager\obj\Debug\GymManager.csproj.CoreCompileInputs.cache
+C:\Users\thaly\source\repos\Projeto-Final-Banco-de-Dados-2-\GymManager\obj\Debug\GymManager.exe
+C:\Users\thaly\source\repos\Projeto-Final-Banco-de-Dados-2-\GymManager\obj\Debug\GymManager.pdb
