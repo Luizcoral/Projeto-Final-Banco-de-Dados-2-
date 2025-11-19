@@ -1,10 +1,22 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "G:\\Meu Drive\\FACULDADE\\Banco de dados 2\\Trabalho final\\GymManager\\",
+  "WorkspaceRootPath": "C:\\Users\\thaly\\source\\repos\\Projeto-Final-Banco-de-Dados-2-\\GymManager\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F3C32EB9-B5E2-4F82-8F43-84371FEC490B}|GymManager.csproj|g:\\meu drive\\faculdade\\banco de dados 2\\trabalho final\\gymmanager\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{F3C32EB9-B5E2-4F82-8F43-84371FEC490B}|GymManager.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{F3C32EB9-B5E2-4F82-8F43-84371FEC490B}|GymManager.csproj|c:\\users\\thaly\\source\\repos\\projeto-final-banco-de-dados-2-\\gymmanager\\main_form.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{F3C32EB9-B5E2-4F82-8F43-84371FEC490B}|GymManager.csproj|solutionrelative:main_form.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F3C32EB9-B5E2-4F82-8F43-84371FEC490B}|GymManager.csproj|c:\\users\\thaly\\source\\repos\\projeto-final-banco-de-dados-2-\\gymmanager\\alunos_main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{F3C32EB9-B5E2-4F82-8F43-84371FEC490B}|GymManager.csproj|solutionrelative:alunos_main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F3C32EB9-B5E2-4F82-8F43-84371FEC490B}|GymManager.csproj|c:\\users\\thaly\\source\\repos\\projeto-final-banco-de-dados-2-\\gymmanager\\alunos_main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F3C32EB9-B5E2-4F82-8F43-84371FEC490B}|GymManager.csproj|solutionrelative:alunos_main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F3C32EB9-B5E2-4F82-8F43-84371FEC490B}|GymManager.csproj|c:\\users\\thaly\\source\\repos\\projeto-final-banco-de-dados-2-\\gymmanager\\planos_main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{F3C32EB9-B5E2-4F82-8F43-84371FEC490B}|GymManager.csproj|solutionrelative:planos_main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 301,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -22,12 +34,49 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "planos_main.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\thaly\\source\\repos\\Projeto-Final-Banco-de-Dados-2-\\GymManager\\planos_main.cs",
+              "RelativeDocumentMoniker": "planos_main.cs",
+              "ToolTip": "C:\\Users\\thaly\\source\\repos\\Projeto-Final-Banco-de-Dados-2-\\GymManager\\planos_main.cs [Design]",
+              "RelativeToolTip": "planos_main.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-19T00:01:33.589Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "alunos_main.cs",
+              "DocumentMoniker": "C:\\Users\\thaly\\source\\repos\\Projeto-Final-Banco-de-Dados-2-\\GymManager\\alunos_main.cs",
+              "RelativeDocumentMoniker": "alunos_main.cs",
+              "ToolTip": "C:\\Users\\thaly\\source\\repos\\Projeto-Final-Banco-de-Dados-2-\\GymManager\\alunos_main.cs",
+              "RelativeToolTip": "alunos_main.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAjwBYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-18T23:40:53.309Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "alunos_main.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\thaly\\source\\repos\\Projeto-Final-Banco-de-Dados-2-\\GymManager\\alunos_main.cs",
+              "RelativeDocumentMoniker": "alunos_main.cs",
+              "ToolTip": "C:\\Users\\thaly\\source\\repos\\Projeto-Final-Banco-de-Dados-2-\\GymManager\\alunos_main.cs [Design]",
+              "RelativeToolTip": "alunos_main.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-18T23:29:23.575Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Form1.cs [Design]",
-              "DocumentMoniker": "G:\\Meu Drive\\FACULDADE\\Banco de dados 2\\Trabalho final\\GymManager\\Form1.cs",
-              "RelativeDocumentMoniker": "Form1.cs",
-              "ToolTip": "G:\\Meu Drive\\FACULDADE\\Banco de dados 2\\Trabalho final\\GymManager\\Form1.cs [Design]",
-              "RelativeToolTip": "Form1.cs [Design]",
+              "Title": "main_form.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\thaly\\source\\repos\\Projeto-Final-Banco-de-Dados-2-\\GymManager\\main_form.cs",
+              "RelativeDocumentMoniker": "main_form.cs",
+              "ToolTip": "C:\\Users\\thaly\\source\\repos\\Projeto-Final-Banco-de-Dados-2-\\GymManager\\main_form.cs [Design]",
+              "RelativeToolTip": "main_form.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-12T23:43:58.411Z",
               "EditorCaption": " [Design]"
