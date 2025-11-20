@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Banco.cs" />
     <Compile Include="telas\admin_main.cs">
       <SubType>UserControl</SubType>
     </Compile>
