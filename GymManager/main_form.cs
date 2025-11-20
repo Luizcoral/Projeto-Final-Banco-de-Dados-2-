@@ -17,11 +17,29 @@ namespace GymManager
             InitializeComponent();
         }
 
-        private void btn_alunos_Click(object sender, EventArgs e)
+
+        private void button1_Click(object sender, EventArgs e)
         {
             panel_principal.Controls.Clear();
-            panel_principal.Controls.Add(new alunos_main());
-            //panel_principal.Dock = DockStyle.Fill;
+            panel_principal.Controls.Add(new recep_main());
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            panel_principal.Controls.Clear();
+            panel_principal.Controls.Add(new financ_main());
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            panel_principal.Controls.Clear();
+            panel_principal.Controls.Add(new admin_main());
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            panel_principal.Controls.Clear();
+            panel_principal.Controls.Add(new catraca_main());
         }
     }
 }

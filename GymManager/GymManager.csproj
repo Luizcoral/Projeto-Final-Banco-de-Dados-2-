@@ -46,11 +46,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="alunos_main.cs">
+    <Compile Include="telas\admin_main.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="alunos_main.Designer.cs">
-      <DependentUpon>alunos_main.cs</DependentUpon>
+    <Compile Include="telas\admin_main.Designer.cs">
+      <DependentUpon>admin_main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="telas\catraca_main.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="telas\catraca_main.Designer.cs">
+      <DependentUpon>catraca_main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="telas\recep_main.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="telas\recep_main.Designer.cs">
+      <DependentUpon>recep_main.cs</DependentUpon>
     </Compile>
     <Compile Include="main_form.cs">
       <SubType>Form</SubType>
@@ -58,22 +70,28 @@
     <Compile Include="main_form.Designer.cs">
       <DependentUpon>main_form.cs</DependentUpon>
     </Compile>
-    <Compile Include="planos_main.cs">
+    <Compile Include="telas\financ_main.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="planos_main.Designer.cs">
-      <DependentUpon>planos_main.cs</DependentUpon>
+    <Compile Include="telas\financ_main.Designer.cs">
+      <DependentUpon>financ_main.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="alunos_main.resx">
-      <DependentUpon>alunos_main.cs</DependentUpon>
+    <EmbeddedResource Include="telas\admin_main.resx">
+      <DependentUpon>admin_main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="telas\catraca_main.resx">
+      <DependentUpon>catraca_main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="telas\recep_main.resx">
+      <DependentUpon>recep_main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="main_form.resx">
       <DependentUpon>main_form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="planos_main.resx">
-      <DependentUpon>planos_main.cs</DependentUpon>
+    <EmbeddedResource Include="telas\financ_main.resx">
+      <DependentUpon>financ_main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
