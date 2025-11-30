@@ -52,36 +52,37 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.txtNome = new System.Windows.Forms.TextBox();
-            this.txtCPF = new System.Windows.Forms.TextBox();
-            this.txtEmail = new System.Windows.Forms.TextBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.lblPlano = new System.Windows.Forms.Label();
-            this.lblVencimentoContrato = new System.Windows.Forms.Label();
-            this.lblStatusContrato = new System.Windows.Forms.Label();
+            this.btnSalvar = new System.Windows.Forms.Button();
             this.listViewPagamentos = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.lblStatusContrato = new System.Windows.Forms.Label();
+            this.lblVencimentoContrato = new System.Windows.Forms.Label();
+            this.lblPlano = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.cboUnidadeEditar = new System.Windows.Forms.ComboBox();
-            this.btnSalvar = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtNome = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtCPF = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.btnExcluirAluno = new System.Windows.Forms.Button();
+            this.btnPagarParcela = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabPage3.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox1
@@ -225,7 +226,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(801, 532);
+            this.tabControl1.Size = new System.Drawing.Size(825, 540);
             this.tabControl1.TabIndex = 14;
             // 
             // tabPage1
@@ -343,6 +344,8 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.btnPagarParcela);
+            this.tabPage3.Controls.Add(this.btnExcluirAluno);
             this.tabPage3.Controls.Add(this.btnSalvar);
             this.tabPage3.Controls.Add(this.listViewPagamentos);
             this.tabPage3.Controls.Add(this.groupBox4);
@@ -353,157 +356,21 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(793, 506);
+            this.tabPage3.Size = new System.Drawing.Size(817, 514);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Alunos";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // listView1
+            // btnSalvar
             // 
-            this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(6, 48);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(201, 423);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(6, 22);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(201, 20);
-            this.textBox5.TabIndex = 1;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 16);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 13);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "Nome";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 59);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(27, 13);
-            this.label10.TabIndex = 3;
-            this.label10.Text = "CPF";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(6, 106);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(32, 13);
-            this.label11.TabIndex = 4;
-            this.label11.Text = "Email";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(6, 160);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(47, 13);
-            this.label12.TabIndex = 5;
-            this.label12.Text = "Unidade";
-            // 
-            // txtNome
-            // 
-            this.txtNome.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNome.Location = new System.Drawing.Point(9, 33);
-            this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(214, 20);
-            this.txtNome.TabIndex = 6;
-            // 
-            // txtCPF
-            // 
-            this.txtCPF.Location = new System.Drawing.Point(9, 73);
-            this.txtCPF.Name = "txtCPF";
-            this.txtCPF.Size = new System.Drawing.Size(107, 20);
-            this.txtCPF.TabIndex = 7;
-            // 
-            // txtEmail
-            // 
-            this.txtEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtEmail.Location = new System.Drawing.Point(9, 122);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(214, 20);
-            this.txtEmail.TabIndex = 8;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.cboUnidadeEditar);
-            this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Controls.Add(this.txtEmail);
-            this.groupBox3.Controls.Add(this.label12);
-            this.groupBox3.Controls.Add(this.txtNome);
-            this.groupBox3.Controls.Add(this.label11);
-            this.groupBox3.Controls.Add(this.txtCPF);
-            this.groupBox3.Controls.Add(this.label10);
-            this.groupBox3.Location = new System.Drawing.Point(213, 6);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(229, 227);
-            this.groupBox3.TabIndex = 9;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Dados pessoais";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(6, 6);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(40, 13);
-            this.label13.TabIndex = 10;
-            this.label13.Text = "Buscar";
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox4.Controls.Add(this.lblStatusContrato);
-            this.groupBox4.Controls.Add(this.lblVencimentoContrato);
-            this.groupBox4.Controls.Add(this.lblPlano);
-            this.groupBox4.Location = new System.Drawing.Point(213, 239);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(228, 232);
-            this.groupBox4.TabIndex = 11;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Plano Atual";
-            // 
-            // lblPlano
-            // 
-            this.lblPlano.AutoSize = true;
-            this.lblPlano.Location = new System.Drawing.Point(6, 27);
-            this.lblPlano.Name = "lblPlano";
-            this.lblPlano.Size = new System.Drawing.Size(79, 13);
-            this.lblPlano.TabIndex = 3;
-            this.lblPlano.Text = "Nome do plano";
-            // 
-            // lblVencimentoContrato
-            // 
-            this.lblVencimentoContrato.AutoSize = true;
-            this.lblVencimentoContrato.Location = new System.Drawing.Point(6, 64);
-            this.lblVencimentoContrato.Name = "lblVencimentoContrato";
-            this.lblVencimentoContrato.Size = new System.Drawing.Size(109, 13);
-            this.lblVencimentoContrato.TabIndex = 4;
-            this.lblVencimentoContrato.Text = "Data final do contrato";
-            // 
-            // lblStatusContrato
-            // 
-            this.lblStatusContrato.AutoSize = true;
-            this.lblStatusContrato.Location = new System.Drawing.Point(6, 95);
-            this.lblStatusContrato.Name = "lblStatusContrato";
-            this.lblStatusContrato.Size = new System.Drawing.Size(79, 13);
-            this.lblStatusContrato.TabIndex = 5;
-            this.lblStatusContrato.Text = "Status contrato";
+            this.btnSalvar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSalvar.Location = new System.Drawing.Point(736, 485);
+            this.btnSalvar.Name = "btnSalvar";
+            this.btnSalvar.Size = new System.Drawing.Size(75, 23);
+            this.btnSalvar.TabIndex = 13;
+            this.btnSalvar.Text = "Salvar";
+            this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // listViewPagamentos
             // 
@@ -513,12 +380,11 @@
             this.listViewPagamentos.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4});
+            this.columnHeader3});
             this.listViewPagamentos.HideSelection = false;
             this.listViewPagamentos.Location = new System.Drawing.Point(448, 8);
             this.listViewPagamentos.Name = "listViewPagamentos";
-            this.listViewPagamentos.Size = new System.Drawing.Size(339, 463);
+            this.listViewPagamentos.Size = new System.Drawing.Size(363, 471);
             this.listViewPagamentos.TabIndex = 12;
             this.listViewPagamentos.UseCompatibleStateImageBehavior = false;
             this.listViewPagamentos.View = System.Windows.Forms.View.Details;
@@ -538,10 +404,72 @@
             this.columnHeader3.Text = "Status";
             this.columnHeader3.Width = 135;
             // 
-            // columnHeader4
+            // groupBox4
             // 
-            this.columnHeader4.Text = "Pagamento";
-            this.columnHeader4.Width = 96;
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox4.Controls.Add(this.lblStatusContrato);
+            this.groupBox4.Controls.Add(this.lblVencimentoContrato);
+            this.groupBox4.Controls.Add(this.lblPlano);
+            this.groupBox4.Location = new System.Drawing.Point(213, 239);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(228, 240);
+            this.groupBox4.TabIndex = 11;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Plano Atual";
+            // 
+            // lblStatusContrato
+            // 
+            this.lblStatusContrato.AutoSize = true;
+            this.lblStatusContrato.Location = new System.Drawing.Point(6, 95);
+            this.lblStatusContrato.Name = "lblStatusContrato";
+            this.lblStatusContrato.Size = new System.Drawing.Size(79, 13);
+            this.lblStatusContrato.TabIndex = 5;
+            this.lblStatusContrato.Text = "Status contrato";
+            // 
+            // lblVencimentoContrato
+            // 
+            this.lblVencimentoContrato.AutoSize = true;
+            this.lblVencimentoContrato.Location = new System.Drawing.Point(6, 64);
+            this.lblVencimentoContrato.Name = "lblVencimentoContrato";
+            this.lblVencimentoContrato.Size = new System.Drawing.Size(109, 13);
+            this.lblVencimentoContrato.TabIndex = 4;
+            this.lblVencimentoContrato.Text = "Data final do contrato";
+            // 
+            // lblPlano
+            // 
+            this.lblPlano.AutoSize = true;
+            this.lblPlano.Location = new System.Drawing.Point(6, 27);
+            this.lblPlano.Name = "lblPlano";
+            this.lblPlano.Size = new System.Drawing.Size(79, 13);
+            this.lblPlano.TabIndex = 3;
+            this.lblPlano.Text = "Nome do plano";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(6, 6);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(40, 13);
+            this.label13.TabIndex = 10;
+            this.label13.Text = "Buscar";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.cboUnidadeEditar);
+            this.groupBox3.Controls.Add(this.label5);
+            this.groupBox3.Controls.Add(this.txtEmail);
+            this.groupBox3.Controls.Add(this.label12);
+            this.groupBox3.Controls.Add(this.txtNome);
+            this.groupBox3.Controls.Add(this.label11);
+            this.groupBox3.Controls.Add(this.txtCPF);
+            this.groupBox3.Controls.Add(this.label10);
+            this.groupBox3.Location = new System.Drawing.Point(213, 6);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(229, 227);
+            this.groupBox3.TabIndex = 9;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Dados pessoais";
             // 
             // cboUnidadeEditar
             // 
@@ -553,15 +481,107 @@
             this.cboUnidadeEditar.Size = new System.Drawing.Size(216, 21);
             this.cboUnidadeEditar.TabIndex = 9;
             // 
-            // btnSalvar
+            // label5
             // 
-            this.btnSalvar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSalvar.Location = new System.Drawing.Point(712, 477);
-            this.btnSalvar.Name = "btnSalvar";
-            this.btnSalvar.Size = new System.Drawing.Size(75, 23);
-            this.btnSalvar.TabIndex = 13;
-            this.btnSalvar.Text = "Salvar";
-            this.btnSalvar.UseVisualStyleBackColor = true;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 16);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(35, 13);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Nome";
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtEmail.Location = new System.Drawing.Point(9, 122);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(214, 20);
+            this.txtEmail.TabIndex = 8;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(6, 160);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(47, 13);
+            this.label12.TabIndex = 5;
+            this.label12.Text = "Unidade";
+            // 
+            // txtNome
+            // 
+            this.txtNome.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtNome.Location = new System.Drawing.Point(9, 33);
+            this.txtNome.Name = "txtNome";
+            this.txtNome.Size = new System.Drawing.Size(214, 20);
+            this.txtNome.TabIndex = 6;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(6, 106);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(32, 13);
+            this.label11.TabIndex = 4;
+            this.label11.Text = "Email";
+            // 
+            // txtCPF
+            // 
+            this.txtCPF.Location = new System.Drawing.Point(9, 73);
+            this.txtCPF.Name = "txtCPF";
+            this.txtCPF.Size = new System.Drawing.Size(107, 20);
+            this.txtCPF.TabIndex = 7;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(6, 59);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(27, 13);
+            this.label10.TabIndex = 3;
+            this.label10.Text = "CPF";
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(6, 22);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(201, 20);
+            this.textBox5.TabIndex = 1;
+            // 
+            // listView1
+            // 
+            this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.listView1.HideSelection = false;
+            this.listView1.Location = new System.Drawing.Point(6, 48);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(201, 431);
+            this.listView1.TabIndex = 0;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
+            // 
+            // btnExcluirAluno
+            // 
+            this.btnExcluirAluno.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnExcluirAluno.Location = new System.Drawing.Point(6, 485);
+            this.btnExcluirAluno.Name = "btnExcluirAluno";
+            this.btnExcluirAluno.Size = new System.Drawing.Size(75, 23);
+            this.btnExcluirAluno.TabIndex = 14;
+            this.btnExcluirAluno.Text = "Excluir";
+            this.btnExcluirAluno.UseVisualStyleBackColor = true;
+            this.btnExcluirAluno.Click += new System.EventHandler(this.btnExcluirAluno_Click);
+            // 
+            // btnPagarParcela
+            // 
+            this.btnPagarParcela.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPagarParcela.Location = new System.Drawing.Point(655, 485);
+            this.btnPagarParcela.Name = "btnPagarParcela";
+            this.btnPagarParcela.Size = new System.Drawing.Size(75, 23);
+            this.btnPagarParcela.TabIndex = 15;
+            this.btnPagarParcela.Text = "Pagar";
+            this.btnPagarParcela.UseVisualStyleBackColor = true;
+            this.btnPagarParcela.Click += new System.EventHandler(this.btnPagarParcela_Click);
             // 
             // recep_main
             // 
@@ -570,7 +590,7 @@
             this.AutoSize = true;
             this.Controls.Add(this.tabControl1);
             this.Name = "recep_main";
-            this.Size = new System.Drawing.Size(802, 532);
+            this.Size = new System.Drawing.Size(826, 540);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
@@ -580,10 +600,10 @@
             this.groupBox2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -633,8 +653,9 @@
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.ComboBox cboUnidadeEditar;
+        private System.Windows.Forms.Button btnPagarParcela;
+        private System.Windows.Forms.Button btnExcluirAluno;
     }
 }

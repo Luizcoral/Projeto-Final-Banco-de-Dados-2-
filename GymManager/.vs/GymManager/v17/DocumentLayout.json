@@ -3,32 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\thaly\\OneDrive\\Documentos\\GitHub\\Projeto-Final-Banco-de-Dados-2-\\GymManager\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F3C32EB9-B5E2-4F82-8F43-84371FEC490B}|GymManager.csproj|c:\\users\\thaly\\onedrive\\documentos\\github\\projeto-final-banco-de-dados-2-\\gymmanager\\main_form.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{F3C32EB9-B5E2-4F82-8F43-84371FEC490B}|GymManager.csproj|solutionrelative:main_form.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{F3C32EB9-B5E2-4F82-8F43-84371FEC490B}|GymManager.csproj|C:\\Users\\thaly\\OneDrive\\Documentos\\GitHub\\Projeto-Final-Banco-de-Dados-2-\\GymManager\\telas\\recep_main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{F3C32EB9-B5E2-4F82-8F43-84371FEC490B}|GymManager.csproj|solutionrelative:telas\\recep_main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F3C32EB9-B5E2-4F82-8F43-84371FEC490B}|GymManager.csproj|C:\\Users\\thaly\\OneDrive\\Documentos\\GitHub\\Projeto-Final-Banco-de-Dados-2-\\GymManager\\telas\\financ_main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F3C32EB9-B5E2-4F82-8F43-84371FEC490B}|GymManager.csproj|solutionrelative:telas\\financ_main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F3C32EB9-B5E2-4F82-8F43-84371FEC490B}|GymManager.csproj|c:\\users\\thaly\\onedrive\\documentos\\github\\projeto-final-banco-de-dados-2-\\gymmanager\\telas\\admin_main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{F3C32EB9-B5E2-4F82-8F43-84371FEC490B}|GymManager.csproj|solutionrelative:telas\\admin_main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F3C32EB9-B5E2-4F82-8F43-84371FEC490B}|GymManager.csproj|C:\\Users\\thaly\\OneDrive\\Documentos\\GitHub\\Projeto-Final-Banco-de-Dados-2-\\GymManager\\telas\\recep_main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F3C32EB9-B5E2-4F82-8F43-84371FEC490B}|GymManager.csproj|solutionrelative:telas\\recep_main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F3C32EB9-B5E2-4F82-8F43-84371FEC490B}|GymManager.csproj|C:\\Users\\thaly\\OneDrive\\Documentos\\GitHub\\Projeto-Final-Banco-de-Dados-2-\\GymManager\\telas\\catraca_main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{F3C32EB9-B5E2-4F82-8F43-84371FEC490B}|GymManager.csproj|solutionrelative:telas\\catraca_main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{F3C32EB9-B5E2-4F82-8F43-84371FEC490B}|GymManager.csproj|C:\\Users\\thaly\\OneDrive\\Documentos\\GitHub\\Projeto-Final-Banco-de-Dados-2-\\GymManager\\main_form.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{F3C32EB9-B5E2-4F82-8F43-84371FEC490B}|GymManager.csproj|solutionrelative:main_form.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F3C32EB9-B5E2-4F82-8F43-84371FEC490B}|GymManager.csproj|C:\\Users\\thaly\\OneDrive\\Documentos\\GitHub\\Projeto-Final-Banco-de-Dados-2-\\GymManager\\telas\\catraca_main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F3C32EB9-B5E2-4F82-8F43-84371FEC490B}|GymManager.csproj|solutionrelative:telas\\catraca_main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F3C32EB9-B5E2-4F82-8F43-84371FEC490B}|GymManager.csproj|c:\\users\\thaly\\onedrive\\documentos\\github\\projeto-final-banco-de-dados-2-\\gymmanager\\banco.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F3C32EB9-B5E2-4F82-8F43-84371FEC490B}|GymManager.csproj|solutionrelative:banco.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F3C32EB9-B5E2-4F82-8F43-84371FEC490B}|GymManager.csproj|C:\\Users\\thaly\\OneDrive\\Documentos\\GitHub\\Projeto-Final-Banco-de-Dados-2-\\GymManager\\telas\\financ_main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
@@ -37,10 +25,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{F3C32EB9-B5E2-4F82-8F43-84371FEC490B}|GymManager.csproj|C:\\Users\\thaly\\OneDrive\\Documentos\\GitHub\\Projeto-Final-Banco-de-Dados-2-\\GymManager\\telas\\admin_main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F3C32EB9-B5E2-4F82-8F43-84371FEC490B}|GymManager.csproj|solutionrelative:telas\\admin_main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F3C32EB9-B5E2-4F82-8F43-84371FEC490B}|GymManager.csproj|C:\\Users\\thaly\\OneDrive\\Documentos\\GitHub\\Projeto-Final-Banco-de-Dados-2-\\GymManager\\banco.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F3C32EB9-B5E2-4F82-8F43-84371FEC490B}|GymManager.csproj|solutionrelative:banco.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 301,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -62,19 +46,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "main_form.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\thaly\\OneDrive\\Documentos\\GitHub\\Projeto-Final-Banco-de-Dados-2-\\GymManager\\main_form.cs",
-              "RelativeDocumentMoniker": "main_form.cs",
-              "ToolTip": "C:\\Users\\thaly\\OneDrive\\Documentos\\GitHub\\Projeto-Final-Banco-de-Dados-2-\\GymManager\\main_form.cs [Design]",
-              "RelativeToolTip": "main_form.cs [Design]",
+              "DocumentIndex": 1,
+              "Title": "recep_main.cs",
+              "DocumentMoniker": "C:\\Users\\thaly\\OneDrive\\Documentos\\GitHub\\Projeto-Final-Banco-de-Dados-2-\\GymManager\\telas\\recep_main.cs",
+              "RelativeDocumentMoniker": "telas\\recep_main.cs",
+              "ToolTip": "C:\\Users\\thaly\\OneDrive\\Documentos\\GitHub\\Projeto-Final-Banco-de-Dados-2-\\GymManager\\telas\\recep_main.cs",
+              "RelativeToolTip": "telas\\recep_main.cs",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAAAB4AAABLAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-25T02:37:57.474Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-11-20T22:34:43.36Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
+              "Title": "Banco.cs",
+              "DocumentMoniker": "C:\\Users\\thaly\\OneDrive\\Documentos\\GitHub\\Projeto-Final-Banco-de-Dados-2-\\GymManager\\Banco.cs",
+              "RelativeDocumentMoniker": "Banco.cs",
+              "ToolTip": "C:\\Users\\thaly\\OneDrive\\Documentos\\GitHub\\Projeto-Final-Banco-de-Dados-2-\\GymManager\\Banco.cs",
+              "RelativeToolTip": "Banco.cs",
+              "ViewState": "AQIAABsAAAAAAAAAAAAowDUAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-20T00:28:35.895Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "recep_main.cs [Design]",
               "DocumentMoniker": "C:\\Users\\thaly\\OneDrive\\Documentos\\GitHub\\Projeto-Final-Banco-de-Dados-2-\\GymManager\\telas\\recep_main.cs",
               "RelativeDocumentMoniker": "telas\\recep_main.cs",
@@ -87,69 +85,18 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "financ_main.cs",
-              "DocumentMoniker": "C:\\Users\\thaly\\OneDrive\\Documentos\\GitHub\\Projeto-Final-Banco-de-Dados-2-\\GymManager\\telas\\financ_main.cs",
-              "RelativeDocumentMoniker": "telas\\financ_main.cs",
-              "ToolTip": "C:\\Users\\thaly\\OneDrive\\Documentos\\GitHub\\Projeto-Final-Banco-de-Dados-2-\\GymManager\\telas\\financ_main.cs",
-              "RelativeToolTip": "telas\\financ_main.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAArAAAA",
+              "Title": "main_form.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\thaly\\OneDrive\\Documentos\\GitHub\\Projeto-Final-Banco-de-Dados-2-\\GymManager\\main_form.cs",
+              "RelativeDocumentMoniker": "main_form.cs",
+              "ToolTip": "C:\\Users\\thaly\\OneDrive\\Documentos\\GitHub\\Projeto-Final-Banco-de-Dados-2-\\GymManager\\main_form.cs [Design]",
+              "RelativeToolTip": "main_form.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-20T22:34:35.617Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "admin_main.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\thaly\\OneDrive\\Documentos\\GitHub\\Projeto-Final-Banco-de-Dados-2-\\GymManager\\telas\\admin_main.cs",
-              "RelativeDocumentMoniker": "telas\\admin_main.cs",
-              "ToolTip": "C:\\Users\\thaly\\OneDrive\\Documentos\\GitHub\\Projeto-Final-Banco-de-Dados-2-\\GymManager\\telas\\admin_main.cs [Design]",
-              "RelativeToolTip": "telas\\admin_main.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-20T22:33:23.533Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "catraca_main.cs",
-              "DocumentMoniker": "C:\\Users\\thaly\\OneDrive\\Documentos\\GitHub\\Projeto-Final-Banco-de-Dados-2-\\GymManager\\telas\\catraca_main.cs",
-              "RelativeDocumentMoniker": "telas\\catraca_main.cs",
-              "ToolTip": "C:\\Users\\thaly\\OneDrive\\Documentos\\GitHub\\Projeto-Final-Banco-de-Dados-2-\\GymManager\\telas\\catraca_main.cs",
-              "RelativeToolTip": "telas\\catraca_main.cs",
-              "ViewState": "AQIAAAIAAAAAAAAAAAAQwAsAAAAiAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-20T22:33:08.55Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "catraca_main.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\thaly\\OneDrive\\Documentos\\GitHub\\Projeto-Final-Banco-de-Dados-2-\\GymManager\\telas\\catraca_main.cs",
-              "RelativeDocumentMoniker": "telas\\catraca_main.cs",
-              "ToolTip": "C:\\Users\\thaly\\OneDrive\\Documentos\\GitHub\\Projeto-Final-Banco-de-Dados-2-\\GymManager\\telas\\catraca_main.cs [Design]",
-              "RelativeToolTip": "telas\\catraca_main.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-20T22:33:07.213Z",
+              "WhenOpened": "2025-11-25T02:37:57.474Z",
               "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "recep_main.cs",
-              "DocumentMoniker": "C:\\Users\\thaly\\OneDrive\\Documentos\\GitHub\\Projeto-Final-Banco-de-Dados-2-\\GymManager\\telas\\recep_main.cs",
-              "RelativeDocumentMoniker": "telas\\recep_main.cs",
-              "ToolTip": "C:\\Users\\thaly\\OneDrive\\Documentos\\GitHub\\Projeto-Final-Banco-de-Dados-2-\\GymManager\\telas\\recep_main.cs",
-              "RelativeToolTip": "telas\\recep_main.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAkAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-20T22:34:43.36Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
               "Title": "financ_main.cs [Design]",
               "DocumentMoniker": "C:\\Users\\thaly\\OneDrive\\Documentos\\GitHub\\Projeto-Final-Banco-de-Dados-2-\\GymManager\\telas\\financ_main.cs",
               "RelativeDocumentMoniker": "telas\\financ_main.cs",
@@ -161,7 +108,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 5,
               "Title": "admin_main.cs",
               "DocumentMoniker": "C:\\Users\\thaly\\OneDrive\\Documentos\\GitHub\\Projeto-Final-Banco-de-Dados-2-\\GymManager\\telas\\admin_main.cs",
               "RelativeDocumentMoniker": "telas\\admin_main.cs",
@@ -171,18 +118,6 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-20T23:49:44.92Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Banco.cs",
-              "DocumentMoniker": "C:\\Users\\thaly\\OneDrive\\Documentos\\GitHub\\Projeto-Final-Banco-de-Dados-2-\\GymManager\\Banco.cs",
-              "RelativeDocumentMoniker": "Banco.cs",
-              "ToolTip": "C:\\Users\\thaly\\OneDrive\\Documentos\\GitHub\\Projeto-Final-Banco-de-Dados-2-\\GymManager\\Banco.cs",
-              "RelativeToolTip": "Banco.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAABIAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-20T00:28:35.895Z"
             }
           ]
         },

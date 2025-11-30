@@ -19,18 +19,18 @@ namespace GymManager
 
             // --- VINCULAÇÃO DE EVENTOS MANUAIS ---
 
-            // Aba 1 (Cadastro)
-            this.btnCadastrarAluno.Click += new EventHandler(this.btnCadastrarAluno_Click);
+            //// Aba 1 (Cadastro)
+            //this.btnCadastrarAluno.Click += new EventHandler(this.btnCadastrarAluno_Click);
 
-            // Aba 2 (Assinatura)
-            this.btnCadastrarAssinatura.Click += new EventHandler(this.btnCadastrarAssinatura_Click);
+            //// Aba 2 (Assinatura)
+            //this.btnCadastrarAssinatura.Click += new EventHandler(this.btnCadastrarAssinatura_Click);
 
-            // Aba 3 (Detalhes/Edição)
+            //// Aba 3 (Detalhes/Edição)
             this.textBox5.TextChanged += (s, e) => CarregarListaAlunosTab3(textBox5.Text);
             this.listView1.SelectedIndexChanged += ListView1_SelectedIndexChanged;
-            this.btnSalvar.Click += new EventHandler(this.btnSalvar_Click);
+            //this.btnSalvar.Click += new EventHandler(this.btnSalvar_Click);
 
-            // Evento ao trocar de aba (para atualizar as listas automaticamente)
+            //// Evento ao trocar de aba (para atualizar as listas automaticamente)
             this.tabControl1.SelectedIndexChanged += TabControl1_SelectedIndexChanged;
         }
 
@@ -50,7 +50,7 @@ namespace GymManager
             listViewPagamentos.Columns.Add("Vencimento", 80);
             listViewPagamentos.Columns.Add("Valor", 70);
             listViewPagamentos.Columns.Add("Status", 80);
-            listViewPagamentos.Columns.Add("Data Pagto", 80);
+            //listViewPagamentos.Columns.Add("Data Pagto", 80);
         }
 
         private void CarregarDadosIniciais()
@@ -292,7 +292,7 @@ namespace GymManager
             {
                 cn.Open();
 
-                // 1. Dados Pessoais
+                // 1. DADOS PESSOAIS
                 string sqlPessoal = "SELECT Nome, CPF, Email, UnidadeID_FK FROM ALUNOS WHERE AlunoID = @id";
                 using (SqlCommand cmd = new SqlCommand(sqlPessoal, cn))
                 {
@@ -309,10 +309,10 @@ namespace GymManager
                     }
                 }
 
-                // 2. Plano
+                // 2. PLANO
                 string sqlPlano = @"SELECT TOP 1 P.NomePlano, A.DataVencimento 
-                                    FROM ASSINATURAS A JOIN PLANOS P ON A.PlanoID_FK = P.PlanoID 
-                                    WHERE A.AlunoID_FK = @id ORDER BY A.DataVencimento DESC";
+                            FROM ASSINATURAS A JOIN PLANOS P ON A.PlanoID_FK = P.PlanoID 
+                            WHERE A.AlunoID_FK = @id ORDER BY A.DataVencimento DESC";
                 using (SqlCommand cmd = new SqlCommand(sqlPlano, cn))
                 {
                     cmd.Parameters.AddWithValue("@id", id);
@@ -344,14 +344,15 @@ namespace GymManager
                     }
                 }
 
-                // 3. Financeiro
+                // 3. FINANCEIRO (ATUALIZADO PARA INCLUIR PagamentoID)
                 listViewPagamentos.Items.Clear();
-                // SQL adaptado para considerar se tem coluna DataPagamento ou não (vamos assumir que você criou)
-                // Se não criou a coluna ainda, remova "P.DataPagamento" do SELECT abaixo
-                string sqlFin = @"SELECT P.DataVencimento, P.ValorNominal, P.Status 
-                                  FROM PAGAMENTOS P 
-                                  JOIN ASSINATURAS A ON P.AssinaturaID_FK = A.AssinaturaID 
-                                  WHERE A.AlunoID_FK = @id ORDER BY P.DataVencimento DESC";
+
+                string sqlFin = @"
+            SELECT P.PagamentoID, P.DataVencimento, P.ValorNominal, P.Status 
+            FROM PAGAMENTOS P 
+            JOIN ASSINATURAS A ON P.AssinaturaID_FK = A.AssinaturaID 
+            WHERE A.AlunoID_FK = @id 
+            ORDER BY P.DataVencimento DESC";
 
                 using (SqlCommand cmd = new SqlCommand(sqlFin, cn))
                 {
@@ -360,6 +361,9 @@ namespace GymManager
                     {
                         while (r.Read())
                         {
+                            // Pega o ID para usar no botão de pagar
+                            int pagId = Convert.ToInt32(r["PagamentoID"]);
+
                             DateTime vcto = Convert.ToDateTime(r["DataVencimento"]);
                             decimal valor = Convert.ToDecimal(r["ValorNominal"]);
                             string status = r["Status"].ToString();
@@ -369,7 +373,10 @@ namespace GymManager
 
                             string descStatus = status == "C" ? "Pago" : (status == "G" ? "Atrasado" : "Pendente");
                             item.SubItems.Add(descStatus);
-                            // Se tiver DataPagamento, adicione aqui o SubItem 4
+
+                            // --- O SEGREDO ESTÁ AQUI ---
+                            item.Tag = pagId; // Guardamos o ID escondido na linha
+                                              // ---------------------------
 
                             if (status == "C") item.ForeColor = Color.Green;
                             else if (status == "G" || (status == "P" && vcto < DateTime.Today)) item.ForeColor = Color.Red;
@@ -380,7 +387,120 @@ namespace GymManager
                 }
             }
         }
+        private void btnExcluirAluno_Click(object sender, EventArgs e)
+        {
+            if (_alunoIdEdicao == 0)
+            {
+                MessageBox.Show("Selecione um aluno na lista primeiro.");
+                return;
+            }
 
+            if (MessageBox.Show("Tem certeza? Isso apagará TODO o histórico financeiro e de acessos deste aluno.\nEssa ação não pode ser desfeita.",
+                "Excluir Aluno", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                using (SqlConnection cn = Banco.ObterConexao())
+                {
+                    cn.Open();
+                    SqlTransaction tr = cn.BeginTransaction();
+
+                    try
+                    {
+                        // 1. Apagar Acessos na Catraca
+                        using (SqlCommand cmd = new SqlCommand("DELETE FROM ACESSOS_CATRACA WHERE AlunoID_FK = @id", cn, tr))
+                        {
+                            cmd.Parameters.AddWithValue("@id", _alunoIdEdicao);
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        // 2. Apagar Pagamentos (Vinculados às assinaturas do aluno)
+                        using (SqlCommand cmd = new SqlCommand("DELETE FROM PAGAMENTOS WHERE AssinaturaID_FK IN (SELECT AssinaturaID FROM ASSINATURAS WHERE AlunoID_FK = @id)", cn, tr))
+                        {
+                            cmd.Parameters.AddWithValue("@id", _alunoIdEdicao);
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        // 3. Apagar Assinaturas
+                        using (SqlCommand cmd = new SqlCommand("DELETE FROM ASSINATURAS WHERE AlunoID_FK = @id", cn, tr))
+                        {
+                            cmd.Parameters.AddWithValue("@id", _alunoIdEdicao);
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        // 4. Apagar o Aluno
+                        using (SqlCommand cmd = new SqlCommand("DELETE FROM ALUNOS WHERE AlunoID = @id", cn, tr))
+                        {
+                            cmd.Parameters.AddWithValue("@id", _alunoIdEdicao);
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        tr.Commit(); // Confirma a exclusão
+                        MessageBox.Show("Aluno excluído com sucesso.");
+
+                        // Limpa a tela
+                        _alunoIdEdicao = 0;
+                        txtNome.Clear(); txtCPF.Clear(); txtEmail.Clear();
+                        lblPlano.Text = "..."; listViewPagamentos.Items.Clear();
+
+                        // Atualiza a lista lateral
+                        CarregarListaAlunosTab3(textBox5.Text);
+                    }
+                    catch (Exception ex)
+                    {
+                        tr.Rollback(); // Cancela se der erro
+                        MessageBox.Show("Erro ao excluir: " + ex.Message);
+                    }
+                }
+            }
+        }
+        private void btnPagarParcela_Click(object sender, EventArgs e)
+        {
+            // Verifica se tem algo selecionado
+            if (listViewPagamentos.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Selecione uma parcela na lista para dar baixa.");
+                return;
+            }
+
+            ListViewItem item = listViewPagamentos.SelectedItems[0];
+
+            // Verifica se já está pago (Verde)
+            if (item.ForeColor == Color.Green)
+            {
+                MessageBox.Show("Esta parcela já consta como paga.");
+                return;
+            }
+
+            if (MessageBox.Show("Confirmar o recebimento desta parcela?", "Pagamento", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                try
+                {
+                    // Recupera o ID que guardamos na TAG no método PreencherDetalhes
+                    int pagId = (int)item.Tag;
+
+                    using (SqlConnection cn = Banco.ObterConexao())
+                    {
+                        cn.Open();
+                        // Atualiza Status e DataPagamento (se você criou a coluna)
+                        string sql = "UPDATE PAGAMENTOS SET Status = 'C' WHERE PagamentoID = @pid";
+
+                        using (SqlCommand cmd = new SqlCommand(sql, cn))
+                        {
+                            cmd.Parameters.AddWithValue("@pid", pagId);
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+                        
+                    MessageBox.Show("Pagamento confirmado!");
+
+                    // Recarrega os dados para a lista ficar verde
+                    PreencherDetalhes(_alunoIdEdicao);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao pagar: " + ex.Message);
+                }
+            }
+        }
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             if (_alunoIdEdicao == 0) return;
