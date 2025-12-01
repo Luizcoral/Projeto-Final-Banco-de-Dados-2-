@@ -1,0 +1,130 @@
+USE AcademiaDB;
+GO
+
+-- ==============================================================================
+-- PREPARAÇÃO: CRIAÇÃO DE ÍNDICES PARA OTIMIZAÇÃO (Requisito do Trabalho)
+-- ==============================================================================
+-- Índices Non-Clustered para acelerar as buscas das perguntas abaixo
+CREATE INDEX idx_pagamentos_status_venc ON PAGAMENTOS(Status, DataVencimento) INCLUDE (ValorNominal);
+CREATE INDEX idx_acessos_datahora ON ACESSOS_CATRACA(DataHoraAcesso);
+CREATE INDEX idx_alunos_nascimento ON ALUNOS(DataNascimento);
+CREATE INDEX idx_assinaturas_plano_data ON ASSINATURAS(PlanoID_FK, DataInicio);
+GO
+
+-- ==============================================================================
+-- PERGUNTA 1: Qual a receita Prevista vs. Realizada por Unidade?
+-- Objetivo: Saber qual filial está dando mais lucro e qual tem mais inadimplência.
+-- TÉCNICA: JOIN + GROUP BY + CASE WHEN
+-- ==============================================================================
+SELECT 
+    U.NomeUnidade,
+    -- Soma tudo que foi gerado (Previsto)
+    SUM(P.ValorNominal) as ReceitaPrevista,
+    -- Soma apenas o que tem Status 'C' (Realizado/Pago)
+    SUM(CASE WHEN P.Status = 'C' THEN P.ValorNominal ELSE 0 END) as ReceitaRealizada,
+    -- Calcula a % de inadimplência
+    CAST(100.0 - (SUM(CASE WHEN P.Status = 'C' THEN P.ValorNominal ELSE 0 END) * 100.0 / NULLIF(SUM(P.ValorNominal), 0)) AS DECIMAL(10,2)) as PercInadimplencia
+FROM UNIDADES U
+JOIN ALUNOS A ON U.UnidadeID = A.UnidadeID_FK
+JOIN ASSINATURAS S ON A.AlunoID = S.AlunoID_FK
+JOIN PAGAMENTOS P ON S.AssinaturaID = P.AssinaturaID_FK
+GROUP BY U.NomeUnidade
+ORDER BY ReceitaRealizada DESC;
+
+
+-- ==============================================================================
+-- PERGUNTA 2: Quais são os 3 alunos mais assíduos (que mais treinam)?
+-- Objetivo: Identificar clientes fiéis para premiar ou usar em marketing.
+-- TÉCNICA: TOP + COUNT + JOIN
+-- ==============================================================================
+SELECT TOP 3
+    A.Nome,
+    U.NomeUnidade,
+    COUNT(AC.AcessoID) as TotalPresencas
+FROM ALUNOS A
+JOIN ACESSOS_CATRACA AC ON A.AlunoID = AC.AlunoID_FK
+JOIN UNIDADES U ON A.UnidadeID_FK = U.UnidadeID
+WHERE AC.TipoAcesso = 'E' -- Contamos apenas as Entradas
+GROUP BY A.Nome, U.NomeUnidade
+ORDER BY TotalPresencas DESC;
+
+
+-- ==============================================================================
+-- PERGUNTA 3: Qual a média de idade dos alunos por tipo de Plano?
+-- Objetivo: Entender o perfil demográfico para direcionar campanhas (Ex: Plano Boxe é para jovens?).
+-- TÉCNICA: FUNCTION (fn_CalcularIdade) + AVG
+-- ==============================================================================
+SELECT 
+    P.NomePlano,
+    AVG(dbo.fn_CalcularIdade(A.DataNascimento)) as MediaIdade,
+    COUNT(A.AlunoID) as QtdAlunos
+FROM ALUNOS A
+JOIN ASSINATURAS S ON A.AlunoID = S.AlunoID_FK
+JOIN PLANOS P ON S.PlanoID_FK = P.PlanoID
+WHERE S.DataVencimento >= GETDATE() -- Apenas alunos com plano ativo
+GROUP BY P.NomePlano
+ORDER BY MediaIdade ASC;
+
+
+-- ==============================================================================
+-- PERGUNTA 4: Relatório de Devedores (Quem deve, quanto e desde quando?)
+-- Objetivo: Lista para o time de cobrança atuar.
+-- TÉCNICA: CTE (Common Table Expression) - Requisito Mandatório
+-- ==============================================================================
+WITH Devedores_CTE AS (
+    SELECT 
+        A.Nome,
+        A.Email,
+        COUNT(P.PagamentoID) as QtdBoletosAtrasados,
+        SUM(P.ValorNominal) as DividaTotal,
+        MIN(P.DataVencimento) as AtrasadoDesde
+    FROM ALUNOS A
+    JOIN ASSINATURAS S ON A.AlunoID = S.AlunoID_FK
+    JOIN PAGAMENTOS P ON S.AssinaturaID = P.AssinaturaID_FK
+    -- Filtra Status 'G' (Grave) ou 'P' (Pendente) que já venceu
+    WHERE P.Status = 'G' OR (P.Status = 'P' AND P.DataVencimento < GETDATE())
+    GROUP BY A.Nome, A.Email
+)
+SELECT * FROM Devedores_CTE 
+WHERE DividaTotal > 0 
+ORDER BY DividaTotal DESC;
+
+
+-- ==============================================================================
+-- PERGUNTA 5: Qual o Ranking de vendas de planos neste ano?
+-- Objetivo: Saber qual produto é o carro-chefe da academia.
+-- TÉCNICA: WINDOW FUNCTION (DENSE_RANK) - Requisito Mandatório
+-- ==============================================================================
+SELECT 
+    P.NomePlano,
+    COUNT(S.AssinaturaID) as TotalVendas,
+    -- Cria um ranking: 1º lugar, 2º lugar, etc. Se empatar, repete o número.
+    DENSE_RANK() OVER (ORDER BY COUNT(S.AssinaturaID) DESC) as RankingVendas
+FROM PLANOS P
+JOIN ASSINATURAS S ON P.PlanoID = S.PlanoID_FK
+WHERE YEAR(S.DataInicio) = YEAR(GETDATE()) -- Vendas apenas do ano atual
+GROUP BY P.NomePlano;
+
+
+-- ==============================================================================
+-- PERGUNTA 6: Qual o horário de pico da academia?
+-- Objetivo: Gestão de staff (limpeza e instrutores) nos horários críticos.
+-- TÉCNICA: DATEPART (Extração de hora) + Subconsulta
+-- ==============================================================================
+SELECT 
+    Horario,
+    QtdPessoas,
+    CASE 
+        WHEN QtdPessoas >= 15 THEN 'Crítico - Reforçar Staff'
+        WHEN QtdPessoas >= 8 THEN 'Movimentado'
+        ELSE 'Tranquilo'
+    END as StatusLotacao
+FROM (
+    SELECT 
+        DATEPART(HOUR, DataHoraAcesso) as Horario,
+        COUNT(*) as QtdPessoas
+    FROM ACESSOS_CATRACA
+    WHERE TipoAcesso = 'E'
+    GROUP BY DATEPART(HOUR, DataHoraAcesso)
+) as TabelaVirtual
+ORDER BY QtdPessoas DESC;
