@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +12,9 @@ namespace GymManager
     public class Banco
     {
         // Ajuste "SEU_SERVIDOR" para o nome do seu SQL Server
-        private static string connectionString = "Server=THALYSSON;Database=AcademiaDB;Trusted_Connection=True;";
+        string server_config = Properties.Settings.Default.ServerName.ToString();
+
+        private static string connectionString = $"Server={server_config};Database=AcademiaDB;Trusted_Connection=True;";
 
         public static SqlConnection ObterConexao()
         {
