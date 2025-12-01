@@ -30,3 +30,27 @@ A modelagem foi realizada com o uso das seguintes ferramentas:
 💾 SQL Server – referência para os tipos de dados, índices e constraints.
 
 Este modelo físico serve como base sólida para a implementação do banco de dados relacional da academia, oferecendo suporte ao desenvolvimento de sistemas de gestão com controle eficiente de cadastros, contratos, finanças e acessos.
+
+## Configuração e execução da interface C# (GymManager)
+
+- **Pré-requisitos:**
+	- SQL Server (local ou remoto) com permissões para criar banco de dados.
+	- Visual Studio (Windows) com suporte a projetos Windows Forms (.NET Framework 4.8).
+
+- **Criar o banco de dados:**
+	1. Abra o arquivo `scripts/query_main.sql` no SQL Server Management Studio (SSMS) ou outro cliente.
+	2. Ajuste o nome do servidor se necessário (o script cria o banco `AcademiaDB`).
+	3. Execute o script para criar tabelas, procedures e popular os dados de exemplo.
+
+- **Configurar string de conexão:**
+	1. Abra `crud/GymManager/App.config` e localize a seção `connectionStrings`.
+	2. Atualize `Data Source` para o nome/instância do seu SQL Server (ex: `localhost`, `\\.\\SQLEXPRESS`, ou `MEUSERVIDOR`).
+	3. Se você usar autenticação SQL, substitua `Integrated Security=True` por `User ID=seu_user;Password=sua_senha;`.
+
+- **Executar a aplicação:**
+	1. Abra `crud/GymManager/GymManager.sln` no Visual Studio.
+	2. Compile e execute (F5). A interface de Recepção abre por padrão.
+
+- **Notas:**
+	- O arquivo `crud/GymManager/Banco.cs` lê a connection string nomeada `AcademiaDB` em `App.config`. Se ausente, ele utiliza a configuração `ServerName` em `Properties.Settings` como fallback.
+	- Scripts SQL adicionais e documentação estão na pasta `scripts/`.

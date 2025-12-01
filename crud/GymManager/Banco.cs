@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Configuration;
 using System.Dynamic;
 using System.Linq;
 using System.Text;
@@ -11,14 +12,18 @@ namespace GymManager
 {
     public class Banco
     {
-        // Ajuste "SEU_SERVIDOR" para o nome do seu SQL Server
-        string server_config = Properties.Settings.Default.ServerName.ToString();
-
-        private static string connectionString = $"Server={server_config};Database=AcademiaDB;Trusted_Connection=True;";
-
         public static SqlConnection ObterConexao()
         {
-            return new SqlConnection(connectionString);
+            // Lê a connection string nomeada em App.config (connectionStrings)
+            var conn = ConfigurationManager.ConnectionStrings["AcademiaDB"]?.ConnectionString;
+            if (string.IsNullOrEmpty(conn))
+            {
+                // Fallback para uso via Settings (ServerName) caso connectionStrings não esteja configurada
+                var server = Properties.Settings.Default.ServerName?.ToString();
+                conn = $"Data Source={server};Initial Catalog=AcademiaDB;Integrated Security=True;";
+            }
+
+            return new SqlConnection(conn);
         }
 
         public DataTable ListarUnidades()
