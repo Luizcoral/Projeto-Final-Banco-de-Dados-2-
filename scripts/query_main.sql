@@ -1,21 +1,20 @@
+   
 /* =============================================================
-   PROJETO ACADEMIA – SCRIPT COMPLETO
+   PROJETO ACADEMIA – SCRIPT COMPLETO (OTIMIZADO)
    Contém: DDL + DML + FUNCTION + TRIGGER + STORED PROCEDURE + INDICES
    ============================================================= */
-   drop table ACESSOS_CATRACA
-   drop table PLANOS_BENEFICIOS
-   drop table BENEFICIOS
-   drop table PAGAMENTOS
-   drop table ASSINATURAS
-   drop table PLANOS
-   drop table ALUNOS
-   drop table UNIDADES
-   
+
 ----------------------------------------------------
--- 0. CRIAÇÃO DO BANCO
+-- 0. CRIAÇÃO DO BANCO (Reseta o banco se existir)
 ----------------------------------------------------
+USE master;
+GO
+
 IF DB_ID('AcademiaDB') IS NOT NULL
+BEGIN
+    ALTER DATABASE AcademiaDB SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
     DROP DATABASE AcademiaDB;
+END
 GO
 
 CREATE DATABASE AcademiaDB;
@@ -57,7 +56,8 @@ CREATE TABLE PLANOS (
     PlanoID INT IDENTITY(1,1) PRIMARY KEY,
     NomePlano VARCHAR(50),
     ValorMensal DECIMAL(10,2),
-    DuracaoMeses INT
+    -- ALTERADO PARA TINYINT (Otimização: 0 a 255 meses)
+    DuracaoMeses TINYINT 
 );
 
 ----------------------------------------------------
@@ -101,7 +101,9 @@ CREATE TABLE PAGAMENTOS (
     AssinaturaID_FK INT,
     ValorNominal DECIMAL(10,2),
     DataVencimento DATE,
-    Status CHAR(1), -- P=Pago, G=Em atraso
+    Status CHAR(1), -- P=Pago, G=Em atraso, C=Confirmado
+    -- INCLUÍDA DIRETAMENTE AQUI (Não precisa de ALTER TABLE depois)
+    DataPagamento DATETIME NULL, 
     FOREIGN KEY (AssinaturaID_FK) REFERENCES ASSINATURAS(AssinaturaID)
 );
 
@@ -117,14 +119,16 @@ CREATE TABLE ACESSOS_CATRACA (
     FOREIGN KEY (AlunoID_FK) REFERENCES ALUNOS(AlunoID),
     FOREIGN KEY (UnidadeID_FK) REFERENCES UNIDADES(UnidadeID)
 );
+GO
+USE AcademiaDB;
+GO
 
-IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'PAGAMENTOS' AND COLUMN_NAME = 'DataPagamento')
-BEGIN
-    ALTER TABLE PAGAMENTOS
-    ADD DataPagamento DATETIME NULL;
-END
+-- CORREÇÃO CRÍTICA: Define o formato de data para Ano-Mês-Dia ANTES de inserir qualquer coisa
+SET DATEFORMAT ymd;
+GO
+
 /* =============================================================
-   2. POPULAÇÃO DO BANCO (INSERTS)
+   INSERÇÃO DE DADOS (DML)
    ============================================================= */
 
 ----------------------------------------------------
@@ -141,41 +145,43 @@ INSERT INTO UNIDADES (NomeUnidade, Endereco, Status) VALUES
 ('Unidade Strong', 'Rua Musculação, 800', 'A'),
 ('Unidade Power', 'Avenida Esportes, 900', 'A'),
 ('Unidade Prime', 'Rua Prime, 1000', 'A');
+GO
 
 ----------------------------------------------------
 -- 2. ALUNOS
 ----------------------------------------------------
 INSERT INTO ALUNOS (Nome, CPF, Email, DataNascimento, UnidadeID_FK) VALUES
-('João Silva',  '12345678901', 'joao@email.com', '2000-05-10', 1),
-('Maria Costa', '23456789012', 'maria@email.com', '1999-08-21', 1),
-('Pedro Souza','34567890123', 'pedro@email.com', '1998-03-11', 2),
-('Ana Lima',   '45678901234', 'ana@email.com', '2001-01-15', 2),
-('Rafael Dias', '56789012345','rafael@email.com','2002-06-01', 3),
-('Camila Rocha','67890123456','camila@email.com','1997-07-27', 3),
-('Lucas Alves', '78901234567','lucas@email.com','1995-04-02', 4),
-('Beatriz Melo','89012345678','bia@email.com','1996-12-19', 5),
-('Julia Nunes', '90123456789','julia@email.com','2000-10-09', 6),
-('Carlos Peres','01234567890','carlos@email.com','1999-02-14', 7),
-('Roberto Carlos', '11122233399', 'rc@email.com', '1980-04-19', 1),
-('Erasmo Carlos',  '22233344488', 'erasmo@email.com', '1982-06-05', 1),
-('Wanderléa Silva','33344455577', 'wand@email.com', '1985-11-02', 2),
-('Tim Maia',       '44455566666', 'tim@email.com', '1975-09-28', 2),
-('Rita Lee',       '55566677755', 'rita@email.com', '1978-12-31', 3),
-('Cazuza Araújo',  '66677788844', 'cazuza@email.com', '1988-04-04', 3),
-('Renato Russo',   '77788899933', 'renato@email.com', '1990-03-27', 4),
-('Cassia Eller',   '88899900022', 'cassia@email.com', '1992-12-10', 4),
-('Chorao Santos',  '99900011111', 'chorao@email.com', '1995-04-09', 5),
-('Elis Regina',    '00011122200', 'elis@email.com', '1979-03-17', 5),
-('Ney Matogrosso', '12121212199', 'ney@email.com', '1976-08-01', 6),
-('Gal Costa',      '23232323288', 'gal@email.com', '1980-09-26', 6),
-('Maria Bethania', '34343434377', 'beth@email.com', '1978-06-18', 7),
-('Caetano Veloso', '45454545466', 'cae@email.com', '1977-08-07', 7),
-('Gilberto Gil',   '56565656555', 'gil@email.com', '1977-06-26', 8),
-('Djavan Silva',   '67676767644', 'djavan@email.com', '1981-01-27', 8),
-('Marisa Monte',   '78787878733', 'marisa@email.com', '1987-07-01', 9),
-('Ivete Sangalo',  '89898989822', 'ivete@email.com', '1982-05-27', 9),
-('Claudia Leitte', '90909090911', 'claudia@email.com', '1985-07-10', 10),
-('Lulu Santos',    '01010101000', 'lulu@email.com', '1983-05-04', 10);
+('João Silva',   '12345678901', 'joao@email.com', '2000-05-10', 1),
+('Maria Costa',  '23456789012', 'maria@email.com', '1999-08-21', 1),
+('Pedro Souza',  '34567890123', 'pedro@email.com', '1998-03-11', 2),
+('Ana Lima',     '45678901234', 'ana@email.com', '2001-01-15', 2),
+('Rafael Dias',  '56789012345', 'rafael@email.com','2002-06-01', 3),
+('Camila Rocha', '67890123456', 'camila@email.com','1997-07-27', 3),
+('Lucas Alves',  '78901234567', 'lucas@email.com','1995-04-02', 4),
+('Beatriz Melo', '89012345678', 'bia@email.com','1996-12-19', 5),
+('Julia Nunes',  '90123456789', 'julia@email.com','2000-10-09', 6),
+('Carlos Peres', '01234567890', 'carlos@email.com','1999-02-14', 7),
+('Roberto Carlos','11122233399','rc@email.com', '1980-04-19', 1),
+('Erasmo Carlos', '22233344488','erasmo@email.com', '1982-06-05', 1),
+('Wanderléa Silva','33344455577','wand@email.com', '1985-11-02', 2),
+('Tim Maia',      '44455566666','tim@email.com', '1975-09-28', 2),
+('Rita Lee',      '55566677755','rita@email.com', '1978-12-31', 3),
+('Cazuza Araújo', '66677788844','cazuza@email.com', '1988-04-04', 3),
+('Renato Russo',  '77788899933','renato@email.com', '1990-03-27', 4),
+('Cassia Eller',  '88899900022','cassia@email.com', '1992-12-10', 4),
+('Chorao Santos', '99900011111','chorao@email.com', '1995-04-09', 5),
+('Elis Regina',   '00011122200','elis@email.com', '1979-03-17', 5),
+('Ney Matogrosso','12121212199','ney@email.com', '1976-08-01', 6),
+('Gal Costa',     '23232323288','gal@email.com', '1980-09-26', 6),
+('Maria Bethania','34343434377','beth@email.com', '1978-06-18', 7),
+('Caetano Veloso','45454545466','cae@email.com', '1977-08-07', 7),
+('Gilberto Gil',  '56565656555','gil@email.com', '1977-06-26', 8),
+('Djavan Silva',  '67676767644','djavan@email.com', '1981-01-27', 8),
+('Marisa Monte',  '78787878733','marisa@email.com', '1987-07-01', 9),
+('Ivete Sangalo', '89898989822','ivete@email.com', '1982-05-27', 9),
+('Claudia Leitte','90909090911','claudia@email.com', '1985-07-10', 10),
+('Lulu Santos',   '01010101000','lulu@email.com', '1983-05-04', 10);
+GO
 
 ----------------------------------------------------
 -- 3. PLANOS
@@ -191,6 +197,7 @@ INSERT INTO PLANOS (NomePlano, ValorMensal, DuracaoMeses) VALUES
 ('Natação', 160.00, 1),
 ('Boxe', 140.00, 1),
 ('Completo', 299.90, 1);
+GO
 
 ----------------------------------------------------
 -- 4. BENEFICIOS
@@ -206,15 +213,17 @@ INSERT INTO BENEFICIOS (NomeBeneficio, Descricao) VALUES
 ('Massagem', 'Sessão mensal'),
 ('CrossZone', 'Área de crossfit'),
 ('Café Fit', 'Café saudável à vontade');
+GO
 
 ----------------------------------------------------
 -- 5. PLANOS_BENEFICIOS
 ----------------------------------------------------
-INSERT INTO PLANOS_BENEFICIOS VALUES
+INSERT INTO PLANOS_BENEFICIOS (PlanoID_FK, BeneficioID_FK) VALUES
 (1,1),(1,4),
 (2,1),(2,4),(2,7),
 (3,1),(3,2),(3,3),(3,4),(3,5),
 (10,1),(10,2),(10,3),(10,4),(10,5),(10,6),(10,7),(10,8);
+GO
 
 ----------------------------------------------------
 -- 6. ASSINATURAS
@@ -230,26 +239,27 @@ INSERT INTO ASSINATURAS (AlunoID_FK, PlanoID_FK, DataInicio, DataVencimento) VAL
 (8,8,'2025-01-08','2025-02-08'),
 (9,9,'2025-01-09','2025-02-09'),
 (10,10,'2025-01-10','2025-02-10'),
-(11, 4, '2024-01-01', '2025-12-31'), -- Ativo (Longo prazo)
-(12, 1, '2025-01-01', '2025-02-01'), -- Vencido
-(13, 2, '2025-02-01', '2026-02-01'), -- Ativo
-(14, 3, '2025-01-15', '2026-01-15'), -- Ativo
-(15, 4, '2024-06-01', '2025-06-01'), -- Ativo
-(16, 5, '2025-03-01', '2025-04-01'), -- Futuro/Ativo
-(17, 10, '2025-01-01', '2025-12-31'), -- Ativo (Plano Caro)
-(18, 1, '2025-10-01', '2025-11-01'), -- Futuro
-(19, 2, '2025-02-01', '2026-02-01'), -- Ativo
-(20, 3, '2025-02-01', '2026-02-01'), -- Ativo
-(21, 1, '2024-01-01', '2024-02-01'), -- Vencido (Antigo)
-(22, 1, '2024-01-01', '2024-02-01'), -- Vencido (Antigo)
-(23, 6, '2025-01-01', '2025-02-01'), -- Vencido
-(24, 7, '2025-05-01', '2025-06-01'), -- Ativo
-(25, 8, '2025-01-01', '2026-01-01'), -- Ativo
-(26, 9, '2025-02-01', '2025-03-01'), -- Vencido
-(27, 2, '2025-01-01', '2026-01-01'), -- Ativo
-(28, 3, '2025-01-01', '2026-01-01'), -- Ativo
-(29, 4, '2025-01-01', '2026-01-01'), -- Ativo
-(30, 5, '2025-01-01', '2025-02-01'); -- Vencido
+(11, 4, '2024-01-01', '2025-12-31'),
+(12, 1, '2025-01-01', '2025-02-01'),
+(13, 2, '2025-02-01', '2026-02-01'),
+(14, 3, '2025-01-15', '2026-01-15'),
+(15, 4, '2024-06-01', '2025-06-01'),
+(16, 5, '2025-03-01', '2025-04-01'),
+(17, 10, '2025-01-01', '2025-12-31'),
+(18, 1, '2025-10-01', '2025-11-01'),
+(19, 2, '2025-02-01', '2026-02-01'),
+(20, 3, '2025-02-01', '2026-02-01'),
+(21, 1, '2024-01-01', '2024-02-01'),
+(22, 1, '2024-01-01', '2024-02-01'),
+(23, 6, '2025-01-01', '2025-02-01'),
+(24, 7, '2025-05-01', '2025-06-01'),
+(25, 8, '2025-01-01', '2026-01-01'),
+(26, 9, '2025-02-01', '2025-03-01'),
+(27, 2, '2025-01-01', '2026-01-01'),
+(28, 3, '2025-01-01', '2026-01-01'),
+(29, 4, '2025-01-01', '2026-01-01'),
+(30, 5, '2025-01-01', '2025-02-01');
+GO
 
 ----------------------------------------------------
 -- 7. PAGAMENTOS
@@ -280,15 +290,17 @@ INSERT INTO PAGAMENTOS (AssinaturaID_FK, ValorNominal, DataVencimento, Status) V
 (28, 199.90, '2025-02-01', 'P'),
 (12, 99.90,  '2025-01-01', 'G'),
 (12, 99.90,  '2025-02-01', 'G'),
-(21, 99.90,  '2024-02-01', 'G'), -- Dívida antiga
+(21, 99.90,  '2024-02-01', 'G'),
 (26, 140.00, '2025-02-01', 'G'),
 (30, 220.00, '2025-01-01', 'G');
-go
+GO
 
-SET DATEFORMAT ymd;
 ----------------------------------------------------
 -- 8. ACESSOS_CATRACA
 ----------------------------------------------------
+-- Força o SQL a entender o formato Ano-Mês-Dia para esta execução
+SET DATEFORMAT ymd;
+
 INSERT INTO ACESSOS_CATRACA (AlunoID_FK, UnidadeID_FK, DataHoraAcesso, TipoAcesso) VALUES
 -- Manhã
 (1, 1, '2025-11-20 06:10:00', 'E'), (3, 2, '2025-11-20 06:15:00', 'E'),
@@ -311,15 +323,15 @@ INSERT INTO ACESSOS_CATRACA (AlunoID_FK, UnidadeID_FK, DataHoraAcesso, TipoAcess
 (15, 3, '2025-11-20 19:30:00', 'E'), (17, 4, '2025-11-20 19:35:00', 'E'),
 (23, 6, '2025-11-20 19:40:00', 'E'), (24, 7, '2025-11-20 19:50:00', 'E'),
 (28, 9, '2025-11-20 20:00:00', 'E'), (29, 10,'2025-11-20 20:10:00', 'E');
-
+GO
 /* =============================================================
-   3. CRIAÇÃO DOS ÍNDICES
+   CRIAÇÃO DOS ÍNDICES
    ============================================================= */
-
 CREATE INDEX idx_alunos_unidade ON ALUNOS(UnidadeID_FK);
 CREATE INDEX idx_assinaturas_aluno ON ASSINATURAS(AlunoID_FK);
 CREATE INDEX idx_pagamentos_assinatura ON PAGAMENTOS(AssinaturaID_FK);
 CREATE INDEX idx_catraca_aluno ON ACESSOS_CATRACA(AlunoID_FK);
+GO
 
 
 /* =============================================================

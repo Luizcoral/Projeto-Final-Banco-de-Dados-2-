@@ -52,6 +52,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.btnPagarParcela = new System.Windows.Forms.Button();
+            this.btnExcluirAluno = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.listViewPagamentos = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -73,8 +75,6 @@
             this.label10 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.listView1 = new System.Windows.Forms.ListView();
-            this.btnExcluirAluno = new System.Windows.Forms.Button();
-            this.btnPagarParcela = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -91,7 +91,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.Location = new System.Drawing.Point(19, 40);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(741, 20);
+            this.textBox1.Size = new System.Drawing.Size(768, 20);
             this.textBox1.TabIndex = 0;
             // 
             // label1
@@ -127,14 +127,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox3.Location = new System.Drawing.Point(19, 142);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(741, 20);
+            this.textBox3.Size = new System.Drawing.Size(768, 20);
             this.textBox3.TabIndex = 4;
             // 
             // label4
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(657, 67);
+            this.label4.Location = new System.Drawing.Point(684, 67);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(87, 13);
             this.label4.TabIndex = 7;
@@ -152,7 +152,7 @@
             // btnCadastrarAluno
             // 
             this.btnCadastrarAluno.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCadastrarAluno.Location = new System.Drawing.Point(647, 465);
+            this.btnCadastrarAluno.Location = new System.Drawing.Point(674, 476);
             this.btnCadastrarAluno.Name = "btnCadastrarAluno";
             this.btnCadastrarAluno.Size = new System.Drawing.Size(128, 23);
             this.btnCadastrarAluno.TabIndex = 12;
@@ -178,7 +178,7 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Location = new System.Drawing.Point(6, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(781, 494);
+            this.groupBox1.Size = new System.Drawing.Size(808, 505);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados";
@@ -190,14 +190,14 @@
             this.textBox2.Location = new System.Drawing.Point(22, 86);
             this.textBox2.Mask = "00000000000";
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(632, 20);
+            this.textBox2.Size = new System.Drawing.Size(659, 20);
             this.textBox2.TabIndex = 15;
             this.textBox2.ValidatingType = typeof(System.DateTime);
             // 
             // textBox4
             // 
             this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox4.Location = new System.Drawing.Point(660, 86);
+            this.textBox4.Location = new System.Drawing.Point(687, 86);
             this.textBox4.Mask = "00/00/0000";
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(100, 20);
@@ -212,7 +212,7 @@
             this.comboBox3.FormattingEnabled = true;
             this.comboBox3.Location = new System.Drawing.Point(19, 193);
             this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(741, 21);
+            this.comboBox3.Size = new System.Drawing.Size(768, 21);
             this.comboBox3.TabIndex = 14;
             // 
             // tabControl1
@@ -235,7 +235,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(793, 506);
+            this.tabPage1.Size = new System.Drawing.Size(817, 514);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Cadastrar aluno";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -246,7 +246,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(793, 506);
+            this.tabPage2.Size = new System.Drawing.Size(817, 514);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Assinatura";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -265,7 +265,7 @@
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Location = new System.Drawing.Point(6, 6);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(781, 494);
+            this.groupBox2.Size = new System.Drawing.Size(808, 505);
             this.groupBox2.TabIndex = 14;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Dados";
@@ -274,7 +274,7 @@
             // 
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(556, 67);
+            this.label8.Location = new System.Drawing.Point(583, 67);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(72, 13);
             this.label8.TabIndex = 16;
@@ -284,7 +284,7 @@
             // 
             this.dateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(559, 83);
+            this.dateTimePicker1.Location = new System.Drawing.Point(586, 83);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(96, 20);
             this.dateTimePicker1.TabIndex = 15;
@@ -299,7 +299,7 @@
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(16, 83);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(516, 21);
+            this.comboBox2.Size = new System.Drawing.Size(543, 21);
             this.comboBox2.TabIndex = 14;
             // 
             // comboBox1
@@ -310,13 +310,13 @@
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(16, 38);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(741, 21);
+            this.comboBox1.Size = new System.Drawing.Size(768, 21);
             this.comboBox1.TabIndex = 13;
             // 
             // btnCadastrarAssinatura
             // 
             this.btnCadastrarAssinatura.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCadastrarAssinatura.Location = new System.Drawing.Point(647, 465);
+            this.btnCadastrarAssinatura.Location = new System.Drawing.Point(674, 476);
             this.btnCadastrarAssinatura.Name = "btnCadastrarAssinatura";
             this.btnCadastrarAssinatura.Size = new System.Drawing.Size(128, 23);
             this.btnCadastrarAssinatura.TabIndex = 12;
@@ -360,6 +360,28 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Alunos";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // btnPagarParcela
+            // 
+            this.btnPagarParcela.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPagarParcela.Location = new System.Drawing.Point(655, 485);
+            this.btnPagarParcela.Name = "btnPagarParcela";
+            this.btnPagarParcela.Size = new System.Drawing.Size(75, 23);
+            this.btnPagarParcela.TabIndex = 15;
+            this.btnPagarParcela.Text = "Pagar";
+            this.btnPagarParcela.UseVisualStyleBackColor = true;
+            this.btnPagarParcela.Click += new System.EventHandler(this.btnPagarParcela_Click);
+            // 
+            // btnExcluirAluno
+            // 
+            this.btnExcluirAluno.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnExcluirAluno.Location = new System.Drawing.Point(6, 485);
+            this.btnExcluirAluno.Name = "btnExcluirAluno";
+            this.btnExcluirAluno.Size = new System.Drawing.Size(75, 23);
+            this.btnExcluirAluno.TabIndex = 14;
+            this.btnExcluirAluno.Text = "Excluir";
+            this.btnExcluirAluno.UseVisualStyleBackColor = true;
+            this.btnExcluirAluno.Click += new System.EventHandler(this.btnExcluirAluno_Click);
             // 
             // btnSalvar
             // 
@@ -560,28 +582,6 @@
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
-            // 
-            // btnExcluirAluno
-            // 
-            this.btnExcluirAluno.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnExcluirAluno.Location = new System.Drawing.Point(6, 485);
-            this.btnExcluirAluno.Name = "btnExcluirAluno";
-            this.btnExcluirAluno.Size = new System.Drawing.Size(75, 23);
-            this.btnExcluirAluno.TabIndex = 14;
-            this.btnExcluirAluno.Text = "Excluir";
-            this.btnExcluirAluno.UseVisualStyleBackColor = true;
-            this.btnExcluirAluno.Click += new System.EventHandler(this.btnExcluirAluno_Click);
-            // 
-            // btnPagarParcela
-            // 
-            this.btnPagarParcela.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPagarParcela.Location = new System.Drawing.Point(655, 485);
-            this.btnPagarParcela.Name = "btnPagarParcela";
-            this.btnPagarParcela.Size = new System.Drawing.Size(75, 23);
-            this.btnPagarParcela.TabIndex = 15;
-            this.btnPagarParcela.Text = "Pagar";
-            this.btnPagarParcela.UseVisualStyleBackColor = true;
-            this.btnPagarParcela.Click += new System.EventHandler(this.btnPagarParcela_Click);
             // 
             // recep_main
             // 

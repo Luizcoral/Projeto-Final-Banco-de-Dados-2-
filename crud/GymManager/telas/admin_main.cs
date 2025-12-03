@@ -110,29 +110,31 @@ namespace GymManager
 
         private void btnSalvarPlano_Click(object sender, EventArgs e)
         {
-            // Validação básica de números
+            // Validação de Preço (Decimal)
             decimal valorMensal;
-            int duracao;
-
             if (!decimal.TryParse(textBox6.Text, out valorMensal))
             {
                 MessageBox.Show("Digite um valor válido para o preço.");
                 return;
             }
-            if (!int.TryParse(textBox5.Text, out duracao))
+
+            // OTIMIZAÇÃO TINYINT: Usamos 'byte' aqui (0 a 255)
+            // Se o usuário digitar 300, o TryParse retorna false e cai no erro.
+            byte duracao;
+            if (!byte.TryParse(textBox5.Text, out duracao))
             {
-                MessageBox.Show("Digite um número inteiro para a duração.");
+                MessageBox.Show("A duração deve ser um número entre 1 e 255 meses.");
                 return;
             }
 
             using (SqlConnection cn = Banco.ObterConexao())
             {
                 cn.Open();
-                SqlTransaction transaction = cn.BeginTransaction(); // Usamos transação pois vamos gravar em 2 tabelas
+                SqlTransaction transaction = cn.BeginTransaction();
 
                 try
                 {
-                    // 1. Inserir o Plano e recuperar o ID gerado (IDENTITY)
+                    // 1. Inserir o Plano
                     string sqlPlano = "INSERT INTO PLANOS (NomePlano, ValorMensal, DuracaoMeses) VALUES (@nome, @valor, @duracao); SELECT SCOPE_IDENTITY();";
 
                     int novoPlanoID;
@@ -141,13 +143,14 @@ namespace GymManager
                     {
                         cmd.Parameters.AddWithValue("@nome", textBox4.Text);
                         cmd.Parameters.AddWithValue("@valor", valorMensal);
+
+                        // O ADO.NET entende que 'byte' mapeia para SqlDbType.TinyInt
                         cmd.Parameters.AddWithValue("@duracao", duracao);
 
-                        // Executa e pega o ID criado
                         novoPlanoID = Convert.ToInt32(cmd.ExecuteScalar());
                     }
 
-                    // 2. Vincular o Benefício selecionado no ComboBox (Tabela N:N)
+                    // 2. Vincular o Benefício (se houver seleção)
                     if (comboBox1.SelectedValue != null)
                     {
                         int beneficioID = Convert.ToInt32(comboBox1.SelectedValue);
@@ -161,7 +164,7 @@ namespace GymManager
                         }
                     }
 
-                    transaction.Commit(); // Confirma tudo
+                    transaction.Commit();
                     MessageBox.Show("Plano cadastrado com sucesso!");
 
                     textBox4.Text = "";
@@ -171,12 +174,11 @@ namespace GymManager
                 }
                 catch (Exception ex)
                 {
-                    transaction.Rollback(); // Desfaz se der erro no meio
+                    transaction.Rollback();
                     MessageBox.Show("Erro ao salvar plano: " + ex.Message);
                 }
             }
         }
-
 
     }
 }

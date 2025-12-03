@@ -1,9 +1,19 @@
+/* =============================================================
+   PROJETO ACADEMIA – SCRIPT COMPLETO (OTIMIZADO)
+   Contém: DDL + DML + FUNCTION + TRIGGER + STORED PROCEDURE + INDICES
+   ============================================================= */
 
 ----------------------------------------------------
--- 0. CRIAÇÃO DO BANCO
+-- 0. CRIAÇÃO DO BANCO (Reseta o banco se existir)
 ----------------------------------------------------
+USE master;
+GO
+
 IF DB_ID('AcademiaDB') IS NOT NULL
+BEGIN
+    ALTER DATABASE AcademiaDB SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
     DROP DATABASE AcademiaDB;
+END
 GO
 
 CREATE DATABASE AcademiaDB;
@@ -45,7 +55,8 @@ CREATE TABLE PLANOS (
     PlanoID INT IDENTITY(1,1) PRIMARY KEY,
     NomePlano VARCHAR(50),
     ValorMensal DECIMAL(10,2),
-    DuracaoMeses INT
+    -- ALTERADO PARA TINYINT (Otimização: 0 a 255 meses)
+    DuracaoMeses TINYINT 
 );
 
 ----------------------------------------------------
@@ -89,7 +100,9 @@ CREATE TABLE PAGAMENTOS (
     AssinaturaID_FK INT,
     ValorNominal DECIMAL(10,2),
     DataVencimento DATE,
-    Status CHAR(1), -- P=Pago, G=Em atraso
+    Status CHAR(1), -- P=Pago, G=Em atraso, C=Confirmado
+    -- INCLUÍDA DIRETAMENTE AQUI (Não precisa de ALTER TABLE depois)
+    DataPagamento DATETIME NULL, 
     FOREIGN KEY (AssinaturaID_FK) REFERENCES ASSINATURAS(AssinaturaID)
 );
 
@@ -105,9 +118,10 @@ CREATE TABLE ACESSOS_CATRACA (
     FOREIGN KEY (AlunoID_FK) REFERENCES ALUNOS(AlunoID),
     FOREIGN KEY (UnidadeID_FK) REFERENCES UNIDADES(UnidadeID)
 );
+GO
+USE AcademiaDB;
+GO
 
-IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'PAGAMENTOS' AND COLUMN_NAME = 'DataPagamento')
-BEGIN
-    ALTER TABLE PAGAMENTOS
-    ADD DataPagamento DATETIME NULL;
-END
+-- CORREÇÃO CRÍTICA: Define o formato de data para Ano-Mês-Dia ANTES de inserir qualquer coisa
+SET DATEFORMAT ymd;
+GO
