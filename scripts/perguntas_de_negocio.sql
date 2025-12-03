@@ -115,7 +115,7 @@ SELECT
     Horario,
     QtdPessoas,
     CASE 
-        WHEN QtdPessoas >= 15 THEN 'Crítico - Reforçar Staff'
+        WHEN QtdPessoas >= 15 THEN 'Crítico'
         WHEN QtdPessoas >= 8 THEN 'Movimentado'
         ELSE 'Tranquilo'
     END as StatusLotacao

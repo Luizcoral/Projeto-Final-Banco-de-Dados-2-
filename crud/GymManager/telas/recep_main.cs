@@ -481,7 +481,7 @@ namespace GymManager
                     {
                         cn.Open();
                         // Atualiza Status e DataPagamento (se você criou a coluna)
-                        string sql = "UPDATE PAGAMENTOS SET Status = 'C' WHERE PagamentoID = @pid";
+                        string sql = "UPDATE PAGAMENTOS SET Status = 'C', DataPagamento = GETDATE() WHERE PagamentoID = @pid";
 
                         using (SqlCommand cmd = new SqlCommand(sql, cn))
                         {
