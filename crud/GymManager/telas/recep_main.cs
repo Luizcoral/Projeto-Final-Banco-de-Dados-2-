@@ -201,8 +201,10 @@ namespace GymManager
                 {
                     // 1. Detalhes do Plano
                     decimal valorMensal = 0;
-                    int duracaoMeses = 0;
-                    using (SqlCommand cmd = new SqlCommand("SELECT ValorMensal, DuracaoMeses FROM PLANOS WHERE PlanoID = @id", cn, transacao))
+                    int duracaoMeses = 0; // Mantemos int aqui para facilitar a conta de data abaixo
+
+                    string sqlBusca = "SELECT ValorMensal, DuracaoMeses FROM PLANOS WHERE PlanoID = @id";
+                    using (SqlCommand cmd = new SqlCommand(sqlBusca, cn, transacao))
                     {
                         cmd.Parameters.AddWithValue("@id", planoId);
                         using (SqlDataReader reader = cmd.ExecuteReader())
@@ -210,6 +212,10 @@ namespace GymManager
                             if (reader.Read())
                             {
                                 valorMensal = Convert.ToDecimal(reader["ValorMensal"]);
+
+                                // NOTA DE OTIMIZAÇÃO: 
+                                // O banco retorna um TinyInt (byte), mas convertemos para Int32 
+                                // para poder usar no loop 'for' e na função AddMonths.
                                 duracaoMeses = Convert.ToInt32(reader["DuracaoMeses"]);
                             }
                         }
